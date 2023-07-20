@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/mycss/flexslider.css" />
+{% endblock %}
+
+{% block content %}
+<section class="mysection">
+ 
+    <div class="arclist">
+        <h4 class="index-title homeh4"><a href=""><i class="el-certificate"></i>Latest Articles
+            <small>News</small>
+        </a></h4>
+        {% include "blog/component/blog_list.html" with blogs=blog_list id="New" %}
+    </div>
+
+</section>
+{% endblock %}
