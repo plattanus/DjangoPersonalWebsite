@@ -2,8 +2,8 @@
 <div id="SOHUCS" sid="{{ source_id }}"></div>
 <script type="text/javascript">
     (function () {
-        var appid = 'cywAsOPzU';
-        var conf = '0aabb9ce85984c4b7d1ece3e6857d6fe';
+        var appid = process.env.CHANGYAN_APPID;
+        var conf = process.env.CHANGYAN_CONF;
         var width = window.innerWidth || document.documentElement.clientWidth;
         if (width < 960) {
             var head = document.getElementsByTagName('head')[0] || document.head || document.documentElement;
