@@ -1,33 +1,51 @@
-# DjangoPerWeb
+## Django搭建博客
+使用Django快速搭建博客
 
-##### 环境
+### 要求
+* Python: 3.9 or （其他我没试试）
+* Django: 4
 
-python3.9 Django4
+### 特点
 
-##### 准备
+* markdown 渲染，代码高亮
+* 三方社会化评论系统支持(畅言)
+* 展示最新发布，博客分页
+* 博文归档，标签
 
+### 复现本博客
+```shell
+pip install -r requirements.txt
+修改setting.py配置数据库（可选）
+配置畅言：http://changyan.kuaizhan.com/（自行注册修改changyan.html的appid和conf）
+python manage.py makemigrations blog
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver（或者python manage.py runserver 0.0.0.0:8000）
 ```
-pip install Django PyMySQL
-修改数据库
-修改常言用户
+浏览器中打开<http://127.0.0.1:8000/>即可访问
+
+部署mysql容器作为数据库
+
+修改settings.py配置
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'myblog',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '172.17.0.2', # 修改ip
+        'PORT': '3306' #修改port
+    }
+}
 ```
 
-##### 用户
+使用docker
 
-```
-python3 manage.py createsuperuser
-```
 
-##### 使用
 
-```
-python3 manage.py makemigrations blog
-python3 manage.py migrate
-python3 manage.py runserver
-```
+## ref
 
-~~注：~~
+* [django2精致网站](https://github.com/jhao104/django-blog)
 
-~~"GET /static/font/iconfont.woff2?v=256 HTTP/1.1" 404 1822
-"GET /static/font/iconfont.woff?v=256 HTTP/1.1" 404 1819
-"GET /static/font/iconfont.ttf?v=256 HTTP/1.1" 404 1816~~
